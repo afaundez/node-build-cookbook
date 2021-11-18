@@ -28,7 +28,9 @@ jobs:
           - fedora-34
           - oraclelinux-8
           - ubuntu-2004
-        chef_version: [16, 17]
+        chef_version:
+          - '16.17.4'
+          - '17.7.29'
         suite: [default]
       fail-fast: false
     steps:
