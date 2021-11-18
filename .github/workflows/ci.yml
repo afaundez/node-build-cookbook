@@ -37,7 +37,7 @@ jobs:
     - name: Install Chef
       uses: actionshub/chef-install@main
       with:
-        version: '{{ matrix.chef_version }}'
+        version: ${{ matrix.chef_version }}
     - name: Test-Kitchen
       uses: actionshub/test-kitchen@main
       with:
