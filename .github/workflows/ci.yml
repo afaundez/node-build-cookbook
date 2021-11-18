@@ -36,6 +36,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Install Chef
       uses: actionshub/chef-install@main
+      with:
+        version: '{{ matrix.chef_version }}'
     - name: Test-Kitchen
       uses: actionshub/test-kitchen@main
       with:
@@ -43,6 +45,5 @@ jobs:
         os: ${{ matrix.os }}
       env:
         CHEF_LICENSE: accept-no-persist
-        CHEF_VERSION: ${{ matrix.chef_version }}
         KITCHEN_LOCAL_YAML: kitchen.dokken.yml
   
