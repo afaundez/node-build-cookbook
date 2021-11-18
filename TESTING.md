@@ -2,11 +2,17 @@
 
 Tested using chef-workstation from Homebrew
 
+# Lint and Style
+
+```sh
+CHEF_LICENSE=accept-no-persist delivery local lint
+```
+
 # Unit specs
 
 ```
 berks install --except integration
-CHEF_LICENSE=accept-no-persist chef exec rspec
+CHEF_LICENSE=accept-no-persist delivery unit
 ```
 
 # Integration tests

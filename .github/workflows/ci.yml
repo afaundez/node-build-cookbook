@@ -7,7 +7,17 @@ on:
     branches: [master]
 
 jobs:
-  dokken:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run Chef Delivery
+        uses: actionshub/chef-delivery@main
+        env:
+          CHEF_LICENSE: accept-no-persist
+
+  integration:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,7 +27,7 @@ jobs:
           - debian-9
           - fedora-34
           - oraclelinux-8
-          - ubuntu-20.04
+          - ubuntu-2004
         chef_version: [16, 17]
         suite: [default]
       fail-fast: false

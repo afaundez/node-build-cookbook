@@ -32,18 +32,6 @@ describe 'plugin install' do
   context 'with deprecated attributes' do
     let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
 
-    before do
-      RSpec.configure do |config|
-        config.log_level = :warn
-      end
-    end
-
-    after do
-      RSpec.configure do |config|
-        config.log_level = :fatal
-      end
-    end
-
     recipe do
       node_build_plugin_install '/tmp/plugins/deprecated-attributes' do
         user 'user'
@@ -51,9 +39,11 @@ describe 'plugin install' do
     end
 
     it do
+      RSpec.configure { |config| config.log_level = :warn }
       expect { chef_run }
         .to not_raise_error
         .and output(/User property is deprecated/).to_stdout_from_any_process
+      RSpec.configure { |config| config.log_level = :fatal }
     end
 
     it { is_expected.to checkout_git('/tmp/plugins/deprecated-attributes').with(user: 'user', group: nil) }
