@@ -28,9 +28,9 @@ jobs:
           - fedora-34
           - oraclelinux-8
           - ubuntu-2004
-        chef_version:
-          - '16.17.4'
-          - '17.7.29'
+        workstation_version:
+          - '21.3.346'
+          - '21.11.679'
         suite: [default]
       fail-fast: false
     steps:
@@ -39,7 +39,7 @@ jobs:
     - name: Install Chef
       uses: actionshub/chef-install@main
       with:
-        version: ${{ matrix.chef_version }}
+        version: ${{ matrix.workstation_version }}
     - name: Test-Kitchen
       uses: actionshub/test-kitchen@main
       with:
