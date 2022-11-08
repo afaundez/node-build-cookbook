@@ -17,4 +17,4 @@ supports 'fedora'
 supports 'oracle'
 supports 'ubuntu'
 
-depends 'git', '~> 10.0.0'
+depends 'git', '~> 11.1.2'
