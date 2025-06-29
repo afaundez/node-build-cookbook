@@ -46,3 +46,10 @@ node_build_plugin_install '/path/to/install/node-build'
 | user            | String  |                                           | Deprecated. Use `owner` instead  |
 
 `node_build_root` is the name property.
+
+# Test
+
+Check [Test Kitchen](https://kitchen.ci/docs/getting-started/running-test).
+
+- docker/dokken: `KITCHEN_LOCAL_YAML=kitchen.dokken.yml kitchen test`
+- vagrant/virtualbox: `kitchen test`
