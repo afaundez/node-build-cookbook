@@ -14,21 +14,19 @@ jobs:
     strategy:
       matrix:
         os:
-          - amazonlinux-2
-          - centos-8
-          - debian-11
-          - fedora-34
-          - oraclelinux-8
-          - ubuntu-2004
-          - ubuntu-2204
+          - amazonlinux-2023
+          - centos-stream-10
+          - debian-12
+          - fedora-40
+          - oraclelinux-9
+          - ubuntu-2404
         workstation_version:
-          - '21.3.346'
-          - '21.11.679'
-        suite: [default]
+          - '24.12.1073'
+          - '25.5.1084'
       fail-fast: false
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Install Chef
       uses: actionshub/chef-install@main
       with:
@@ -40,7 +38,7 @@ jobs:
     - name: Test-Kitchen
       uses: actionshub/test-kitchen@main
       with:
-        suite: ${{ matrix.suite }}
+        suite: default
         os: ${{ matrix.os }}
       env:
         KITCHEN_LOCAL_YAML: kitchen.dokken.yml

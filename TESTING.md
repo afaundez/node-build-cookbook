@@ -13,13 +13,13 @@ berks install --except integration
 ### Lint and Style
 
 ```sh
-CHEF_LICENSE=accept-no-persist delivery local lint
+cookstyle --display-cop-names --extra-details
 ```
 
 ### Unit specs
 
 ```sh
-CHEF_LICENSE=accept-no-persist delivery local unit
+CHEF_LICENSE=accept-no-persist chef exec rspec
 ```
 
 ## Integration tests
