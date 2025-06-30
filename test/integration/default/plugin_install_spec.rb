@@ -95,7 +95,7 @@ control 'upgrade node-build using git revision tag' do
     it { should exist }
   end
 
-  describe command("bash -c \"cd #{node_build_home} && git rev-parse HEAD\"") do
+  describe command("bash -c \"git config --global --add safe.directory #{node_build_home} && cd #{node_build_home} && git rev-parse HEAD\"") do
     its(:stderr) { should eq '' }
     its(:stdout) { should eq "d6a05a7d598dc2ef2f0e5fbccac5123f12eed61e\n" }
   end
