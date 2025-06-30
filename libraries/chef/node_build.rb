@@ -1,15 +1,13 @@
 class Chef
   module NodeBuild
     def node_build_dependencies
-      [python, gcc, make].compact
+      [tar, python, gcc, make].compact
     end
 
     def python
       version = node['platform_version'].to_i
-      if platform?('centos') && version >= 8 then 'python3'
-      elsif platform?('oracle') && version >= 8 then 'python36'
-      elsif platform?('ubuntu') && version >= 20 then 'python3'
-      elsif platform?(*supported_plaftorms) then 'python'
+      if platform?('oracle') && version == 8 then 'python36'
+      elsif platform?(*supported_plaftorms) then 'python3'
       end
     end
 
@@ -22,6 +20,10 @@ class Chef
 
     def make
       'make' if platform?(*supported_plaftorms)
+    end
+
+    def tar
+      'tar' if platform?('amazon')
     end
 
     def supported_plaftorms

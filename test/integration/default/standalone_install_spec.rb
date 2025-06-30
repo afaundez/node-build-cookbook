@@ -29,7 +29,7 @@ end
 
 control 'build a node version with a node-build binary' do
   node_versions_home = '/tmp/node-build-versions'
-  node_version = '12.16.1'
+  node_version = '24.3.0'
 
   node_home = ::File.join node_versions_home, node_version
   describe command("#{node_build_bin} #{node_version} #{node_home}") do
